@@ -34,6 +34,7 @@ fn main() {
     part_two(&contents)
   );
 }
+
 #[cfg(test)]
 mod tests {
   use super::*;
