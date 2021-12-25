@@ -5,11 +5,11 @@ use bingo::Bingo;
 use std::fs::read_to_string;
 
 fn part_one(contents: &String) -> i32 {
-    return Bingo::init(contents).roll(false) as i32;
+    Bingo::init(contents).roll(false) as i32
 }
 
 fn part_two(contents: &String) -> i32 {
-    return Bingo::init(contents).roll(true) as i32;
+    Bingo::init(contents).roll(true) as i32
 }
 
 fn main() {
@@ -32,8 +32,7 @@ mod tests {
     use super::*;
 
     fn get_contents() -> String {
-        return read_to_string("examples/04/sample.in")
-            .expect("Something went wrong reading the file");
+        read_to_string("examples/04/sample.in").expect("Something went wrong reading the file")
     }
 
     #[test]

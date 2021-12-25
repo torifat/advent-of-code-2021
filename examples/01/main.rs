@@ -3,21 +3,21 @@ use std::fs::read_to_string;
 use std::str::FromStr;
 
 fn part_one(contents: &String) -> u16 {
-    return contents
+    contents
         .lines()
         .flat_map(u16::from_str)
         .tuple_windows::<(u16, u16)>()
-        .fold(0, |acc, (l, r)| if r > l { acc + 1 } else { acc });
+        .fold(0, |acc, (l, r)| if r > l { acc + 1 } else { acc })
 }
 
 fn part_two(contents: &String) -> u16 {
-    return contents
+    contents
         .lines()
         .flat_map(u16::from_str)
         .tuple_windows::<(u16, u16, u16)>()
         .map(|(a, b, c)| a + b + c)
         .tuple_windows::<(u16, u16)>()
-        .fold(0, |acc, (l, r)| if r > l { acc + 1 } else { acc });
+        .fold(0, |acc, (l, r)| if r > l { acc + 1 } else { acc })
 }
 
 fn main() {
@@ -40,8 +40,7 @@ mod tests {
     use super::*;
 
     fn get_contents() -> String {
-        return read_to_string("examples/01/sample.in")
-            .expect("Something went wrong reading the file");
+        read_to_string("examples/01/sample.in").expect("Something went wrong reading the file")
     }
 
     #[test]

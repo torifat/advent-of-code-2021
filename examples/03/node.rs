@@ -37,11 +37,11 @@ impl Node {
     }
 
     pub fn oxygen_generator_rating(&self) -> u32 {
-        return self.calculate(0, |l, r| l > r);
+        self.calculate(0, |l, r| l > r)
     }
 
     pub fn co2_scrubber_rating(&self) -> u32 {
-        return self.calculate(0, |l, r| l <= r);
+        self.calculate(0, |l, r| l <= r)
     }
 
     fn calculate(&self, value: u32, pred: impl Fn(u32, u32) -> bool) -> u32 {

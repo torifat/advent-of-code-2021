@@ -14,7 +14,7 @@ fn part_one(contents: &String) -> i32 {
             (_, _) => (h, d),
         });
 
-    return t.0 * t.1;
+    t.0 * t.1
 }
 
 fn part_two(contents: &String) -> i32 {
@@ -29,7 +29,7 @@ fn part_two(contents: &String) -> i32 {
             (_, _) => (h, d, a),
         });
 
-    return t.0 * t.1;
+    t.0 * t.1
 }
 
 fn main() {
@@ -52,8 +52,7 @@ mod tests {
     use super::*;
 
     fn get_contents() -> String {
-        return read_to_string("examples/02/sample.in")
-            .expect("Something went wrong reading the file");
+        read_to_string("examples/02/sample.in").expect("Something went wrong reading the file")
     }
 
     #[test]

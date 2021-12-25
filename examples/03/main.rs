@@ -4,7 +4,7 @@ use node::Node;
 use std::fs::read_to_string;
 
 fn part_one(contents: &String) -> i32 {
-    return contents
+    contents
         .lines()
         .map(|l| {
             l.chars()
@@ -19,17 +19,17 @@ fn part_one(contents: &String) -> i32 {
                 .rev()
                 .enumerate()
                 .fold((0, 0), |(gamma, epsilon), (n_bits, ones)| {
-                    return if *ones > (size - ones) {
+                    if *ones > (size - ones) {
                         (gamma + 2_i32.pow(n_bits as u32), epsilon)
                     } else if *ones < (size - ones) {
                         (gamma, epsilon + 2_i32.pow(n_bits as u32))
                     } else {
                         (gamma, epsilon)
-                    };
+                    }
                 });
-            return t.0 * t.1;
+            t.0 * t.1
         })
-        .unwrap();
+        .unwrap()
 }
 
 fn part_two(contents: &String) -> u32 {
@@ -38,7 +38,7 @@ fn part_two(contents: &String) -> u32 {
     // Populate the tree
     contents.lines().for_each(|l| root.insert(l));
 
-    return root.oxygen_generator_rating() * root.co2_scrubber_rating();
+    root.oxygen_generator_rating() * root.co2_scrubber_rating()
 }
 
 fn main() {
@@ -61,8 +61,7 @@ mod tests {
     use super::*;
 
     fn get_contents() -> String {
-        return read_to_string("examples/03/sample.in")
-            .expect("Something went wrong reading the file");
+        read_to_string("examples/03/sample.in").expect("Something went wrong reading the file")
     }
 
     #[test]

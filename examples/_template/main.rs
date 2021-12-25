@@ -1,11 +1,11 @@
 use std::fs::read_to_string;
 
 fn part_one(_contents: &String) -> i32 {
-    return 1;
+    1
 }
 
 fn part_two(_contents: &String) -> i32 {
-    return 2;
+    2
 }
 
 fn main() {
@@ -22,8 +22,7 @@ mod tests {
     use super::*;
 
     fn get_contents() -> String {
-        return read_to_string("examples/0X/sample.in")
-            .expect("Something went wrong reading the file");
+        read_to_string("examples/0X/sample.in").expect("Something went wrong reading the file")
     }
 
     #[test]

@@ -42,39 +42,38 @@ impl Bingo {
                                 vec.push((b_id as u16, r_id as u16, c_id as u16));
                             });
 
-                        return (mapping, boards);
+                        (mapping, boards)
                     },
                 );
-                return (bits, new_boards, new_mapping);
+                (bits, new_boards, new_mapping)
             },
         );
 
-        return Bingo {
+        Bingo {
             nums,
             bits,
             boards,
             mapping,
-        };
+        }
     }
 
     fn sum_of_unmarked_number(&self, b_id: u16) -> u16 {
         let from = (b_id as usize) * ITEMS;
         let to = from + ITEMS;
-        return self.boards[from..to]
+
+        self.boards[from..to]
             .iter()
             .filter(|n| {
-                let t =
-                    self.mapping
-                        .get(n)
-                        .unwrap_or(&vec![])
-                        .iter()
-                        .any(|(i_b_id, r_id, c_id)| {
-                            let row = self.bits[b_id as usize][*r_id as usize];
-                            return b_id == *i_b_id && (row & (1 << c_id) == 0);
-                        });
-                return t;
+                self.mapping
+                    .get(n)
+                    .unwrap_or(&vec![])
+                    .iter()
+                    .any(|(i_b_id, r_id, c_id)| {
+                        let row = self.bits[b_id as usize][*r_id as usize];
+                        b_id == *i_b_id && (row & (1 << c_id) == 0)
+                    })
             })
-            .sum();
+            .sum()
     }
 
     pub fn roll(&mut self, check_last: bool) -> u16 {
@@ -110,12 +109,12 @@ impl Bingo {
             }
         }
 
-        return match last_completed {
+        match last_completed {
             Some((b_id, n)) => {
                 let sum = self.sum_of_unmarked_number(b_id);
-                return sum * n;
+                sum * n
             }
             None => 0,
-        };
+        }
     }
 }
