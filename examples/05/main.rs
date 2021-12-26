@@ -107,6 +107,6 @@ mod tests {
 
     #[test]
     fn test_part_two() {
-        assert_eq!(5, part_two(&get_contents()));
+        assert_eq!(12, part_two(&get_contents()));
     }
 }
