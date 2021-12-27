@@ -18,8 +18,9 @@ fn count(n: u64, cache: &mut HashMap<u64, u64>) -> u64 {
 fn part_one(contents: &String, days: u64) -> u64 {
     let mut cache = HashMap::new();
     contents
-        .lines()
-        .flat_map(|line| line.split(',').map(|x| u64::from_str(x).unwrap_or(0)))
+        .trim()
+        .split(',')
+        .flat_map(|x| u64::from_str(x))
         .fold(0, |acc, d| acc + count(days + (8 - d), &mut cache))
 }
 

@@ -6,11 +6,7 @@ use std::fs::read_to_string;
 fn part_one(contents: &String) -> i32 {
     contents
         .lines()
-        .map(|l| {
-            l.chars()
-                .map(|c| c.to_digit(10).unwrap_or(0))
-                .collect::<Vec<_>>()
-        })
+        .map(|l| l.chars().flat_map(|c| c.to_digit(10)).collect::<Vec<_>>())
         .reduce(|acc, v| acc.iter().zip(v).map(|(x, y)| x + y).collect())
         .map(|v| {
             let size = contents.lines().count() as u32;
